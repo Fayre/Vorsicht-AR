@@ -29,38 +29,29 @@ var World = {
 		*/
 
 		// Create overlay for page one
-//		var imgOne = new AR.ImageResource("assets/imageOne.png");
-//		var overlayOne = new AR.ImageDrawable(imgOne, 1, {
-//			translate: {
-//				x: -0.15,
-//			}
-//		});
-		var video = new AR.VideoDrawable("assets/Greenscreen_Demo.mp4", 0.7, {
-			translate: {
-				x: -0.2,
-				y: -0.12
-			},
-			isTransparent: true
+		var video = new AR.VideoDrawable("assets/Greenscreen_Demo.mp4", 1, {
+		    translate: {
+		        x: -0.2,
+		        y: -0.12
+		    },
+		    isTransparent: true
 		});
 
-		/*
-			This combines everything by creating an AR.ImageTrackable with the previously created tracker, the name of the image target as defined in the target collection and the drawable that should augment the recognized image.
-			Note that this time a specific target name is used to create a specific augmentation for that exact target.
-		*/
+		// add drawable to marker
 		var pageOne = new AR.ImageTrackable(this.tracker, "marker", {
-			drawables: {
-				cam: video
-			},
-			onImageRecognized: function onImageRecognizedFn() {
-				video.resume();
-				this.removeLoadingBar();
-			},
-			onImageLost: function onImageLostFn() {
-				video.pause();
-			},
-            onError: function(errorMessage) {
-            	alert(errorMessage);
-            }
+		    drawables: {
+		        cam: video
+		    },
+		    onImageRecognized: function onImageRecognizedFn(){
+		        video.resume();
+		        this.removeLoadingBar();
+		    },
+		    onImageLost: function onImageLostFn(){
+		        video.pause();
+		    },
+		    onError: function(errorMessage){
+		        alert(errorMessage);
+		    }
 		});
 
 		/*

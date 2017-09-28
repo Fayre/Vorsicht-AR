@@ -1,12 +1,20 @@
 package de.vorsicht_ar.artestfromscratch;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 
 import com.wikitude.architect.ArchitectStartupConfiguration;
 import com.wikitude.architect.ArchitectView;
@@ -43,6 +51,24 @@ public class ARActivity extends AppCompatActivity {
         // Since Android 6.0+ you need to make sure your app has the camera runtime permission before calling
         cameraPermission();
         this.architectView.onCreate(config);
+
+        FloatingActionButton btn_help = (FloatingActionButton) findViewById(R.id.btn_help);
+        btn_help.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+
+                  startActivity(new Intent(getApplicationContext(), Help.class));
+
+//                FragmentManager fragmentManager = getSupportFragmentManager();
+//                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+//
+//                //Fragment fragment = HelpFragment.newInstance("skdf", "skdflj");
+//                Fragment fragment = new HelpFragment();
+//                fragmentTransaction.add(R.id.fragment_container, fragment);
+//                fragmentTransaction.commit();
+            }
+        });
     }
 
     @Override
@@ -78,12 +104,12 @@ public class ARActivity extends AppCompatActivity {
     /**
      * You need to check and gain the camera permission to use the architectView.
      */
-    private void cameraPermission(){
+    private void cameraPermission() {
         // TODO: check why this doesnt work
         int permissionCheck = ContextCompat.checkSelfPermission(this,
                 Manifest.permission.CAMERA);
 
-        if(permissionCheck == PackageManager.PERMISSION_GRANTED){
+        if (permissionCheck == PackageManager.PERMISSION_GRANTED) {
             // you have the permission, everything is fine
         } else {
             // you do not have the permission, so ask for it

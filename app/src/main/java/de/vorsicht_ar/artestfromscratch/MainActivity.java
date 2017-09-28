@@ -32,13 +32,13 @@ public class MainActivity extends AppCompatActivity {
         });
 
         // start camera without video
-        Button btn_no_video = (Button) findViewById(R.id.btn_no_video);
-        btn_no_video.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ARActivity.TARGET_HTML = "index_no_video.html";
-                startActivity(new Intent(MainActivity.this, ARActivity.class));
-            }
-        });
+//        Button btn_no_video = (Button) findViewById(R.id.btn_no_video);
+//        btn_no_video.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                ARActivity.TARGET_HTML = "index_no_video.html";
+//                startActivity(new Intent(MainActivity.this, ARActivity.class));
+//            }
+//        });
     }
 }
