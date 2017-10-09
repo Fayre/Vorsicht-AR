@@ -50,7 +50,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".ARActivity" android:configChanges="screenSize|orientation"></activity>
-        <activity android:name=".Help"
+        <activity android:name=".HelpList.Help"
             android:theme="@style/AppTheme.CustomPopupTheme"
             ></activity>
     </application>

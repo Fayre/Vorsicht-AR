@@ -6,6 +6,7 @@ var World = {
 	},
 
 	createOverlays: function createOverlaysFn() {
+
 		/*
 			First an AR.ImageTracker needs to be created in order to start the recognition engine. It is initialized with a AR.TargetCollectionResource specific to the target collection that should be used. Optional parameters are passed as object in the last argument. In this case a callback function for the onTargetsLoaded trigger is set. Once the tracker loaded all its target images, the function worldLoaded() is called.
 
@@ -87,14 +88,13 @@ var World = {
 		}
 	},
 
+    //Once the tracker loaded all its target images, the function worldLoaded() is called.
 	worldLoaded: function worldLoadedFn() {
 		var cssDivInstructions = " style='display: table-cell;vertical-align: middle; text-align: right; width: 50%; padding-right: 15px;'";
 		var cssDivSurfer = " style='display: table-cell;vertical-align: middle; text-align: left; padding-right: 15px; width: 38px'";
 		var cssDivBiker = " style='display: table-cell;vertical-align: middle; text-align: left; padding-right: 15px;'";
-		document.getElementById('loadingMessage').innerHTML =
-			"<div" + cssDivInstructions + ">Scan Target &#35;1 (surfer) or &#35;2 (biker):</div>" +
-			"<div" + cssDivSurfer + "><img src='assets/surfer.png'></img></div>" +
-			"<div" + cssDivBiker + "><img src='assets/bike.png'></img></div>";
+
+        document.getElementById("test").innerHTML = "The world is loaded!!";
 	}
 };
 

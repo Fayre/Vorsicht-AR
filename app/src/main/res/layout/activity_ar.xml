@@ -23,16 +23,17 @@
 
     </FrameLayout>
 
+    <com.wikitude.architect.ArchitectView android:id="@+id/architectView" android:layout_width="fill_parent" android:layout_height="fill_parent">
+
+    </com.wikitude.architect.ArchitectView>
+
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/btn_help"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
         android:clickable="true"
         app:fabSize="mini"
         app:srcCompat="@android:drawable/btn_star" />
-
-    <com.wikitude.architect.ArchitectView android:id="@+id/architectView" android:layout_width="fill_parent" android:layout_height="fill_parent">
-
-    </com.wikitude.architect.ArchitectView>
 
 </RelativeLayout>

@@ -31,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
         // start camera without video
 //        Button btn_no_video = (Button) findViewById(R.id.btn_no_video);
 //        btn_no_video.setOnClickListener(new View.OnClickListener() {

@@ -1,27 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="?android:attr/colorPressedHighlight">
+    android:background="#D6B17B">
+
+    <TextView
+        android:id="@+id/text_hint"
+        android:layout_width="287dp"
+        android:layout_height="258dp"
+        android:layout_alignEnd="@+id/list_hints"
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/list_hints"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/list_hints"
+        app:layout_constraintVertical_bias="0.528"
+        tools:layout_editor_absoluteY="179dp" />
 
     <ListView
         android:id="@+id/list_hints"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="199dp"
+        android:layout_height="181dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginLeft="@android:dimen/app_icon_size"
-        android:layout_marginRight="@android:dimen/app_icon_size"
-        android:layout_above="@+id/text_hint" />
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="30dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/text_hint"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Name"
-        android:layout_alignParentBottom="true"
-        android:layout_alignStart="@+id/list_hints" />
-</RelativeLayout>
+</android.support.constraint.ConstraintLayout>
