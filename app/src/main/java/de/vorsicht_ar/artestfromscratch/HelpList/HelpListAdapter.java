@@ -40,10 +40,22 @@ public class HelpListAdapter extends ArrayAdapter {
 
         LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View v = inflater.inflate(R.layout.help_list_items, null);
+
+        // add content to list view
+        HelpListItem currentItem = helpList.get(position);
+
+        ImageView hintPersonIcon = (ImageView) v.findViewById(R.id.hint_personicon);
+        hintPersonIcon.setImageResource(currentItem.getDrawable());
+
         TextView hintText = (TextView) v.findViewById(R.id.hint_text);
-        ImageView hintImage = (ImageView) v.findViewById(R.id.hint_image);
-        hintText.setText(helpList.get(position).getName());
-        hintImage.setImageResource(helpList.get(position).getDrawable());
+        hintText.setText(currentItem.getName());
+
+        ImageView hintStatusIcon = (ImageView) v.findViewById(R.id.hint_statusicon);
+        if(currentItem.isFound()){
+            hintStatusIcon.setImageResource(R.drawable.icon_tick);
+        } else {
+            hintStatusIcon.setImageResource(R.drawable.icon_help);
+        }
 
         return v;
     }

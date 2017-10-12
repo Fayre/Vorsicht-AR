@@ -2,11 +2,13 @@ package de.vorsicht_ar.artestfromscratch.HelpList;
 
 
 import android.app.Activity;
+import android.provider.ContactsContract;
 import android.support.annotation.Nullable;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -19,14 +21,30 @@ import de.vorsicht_ar.artestfromscratch.R;
  */
 
 public class Help extends Activity {
+    /**
+     * the view containing the list.
+     */
     private ListView listView;
+
+    /**
+     * the view containing the text for the specific person.
+     */
     private TextView hintText;
+
+    /**
+     * list of all items.
+     */
     private ArrayList<HelpListItem> helpList = new ArrayList<>();
+
+    private final int HOFNAERRIN = 0;
+    private final int BAECKERIN = 1;
+    private final int DIEB = 2;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.help_window);
+
 
         // customize size
         DisplayMetrics dm = new DisplayMetrics();
@@ -51,15 +69,41 @@ public class Help extends Activity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
+                // get current item
+                HelpListItem item = helpList.get(position);
+                ImageView status = (ImageView) view.findViewById(R.id.hint_statusicon);
+
+                // set text depending on item and status
                 switch (position) {
-                    case 0:
-                        hintText.setText(R.string.hint0);
+                    case HOFNAERRIN:
+                        if (item.isFound()) {
+                            hintText.setText(R.string.text0);
+                            status.setImageResource(R.drawable.icon_help);
+                        } else {
+                            hintText.setText(R.string.hint0);
+                            status.setImageResource(R.drawable.icon_tick);
+                        }
+                        item.setFound(!item.isFound());
                         break;
-                    case 1:
-                        hintText.setText(R.string.hint1);
+                    case BAECKERIN:
+                        if (item.isFound()) {
+                            hintText.setText(R.string.text1);
+                            status.setImageResource(R.drawable.icon_help);
+                        } else {
+                            hintText.setText(R.string.hint1);
+                            status.setImageResource(R.drawable.icon_tick);
+                        }
+                        item.setFound(!item.isFound());
                         break;
-                    case 2:
-                        hintText.setText(R.string.hint2);
+                    case DIEB:
+                        if (item.isFound()) {
+                            hintText.setText(R.string.text2);
+                            status.setImageResource(R.drawable.icon_help);
+                        } else {
+                            hintText.setText(R.string.hint2);
+                            status.setImageResource(R.drawable.icon_tick);
+                        }
+                        item.setFound(!item.isFound());
                         break;
                     default:
                         break;
@@ -67,5 +111,30 @@ public class Help extends Activity {
 
             }
         });
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+
+        boolean[] hintStatus = savedInstanceState.getBooleanArray("hintStatus");
+        if(hintStatus != null && hintStatus.length != 0){
+            for(int i = 0; i < hintStatus.length; i++){
+                helpList.get(i).setFound(hintStatus[i]);
+            }
+        }
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+
+        boolean[] hintStatus = new boolean[helpList.size()];
+        for(int i = 0; i < helpList.size(); i++){
+
+            hintStatus[i] = helpList.get(i).isFound();
+        }
+        outState.putBooleanArray("hintStatus", hintStatus);
+
+        super.onSaveInstanceState(outState);
     }
 }

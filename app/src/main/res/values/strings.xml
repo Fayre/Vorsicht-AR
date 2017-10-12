@@ -7,5 +7,10 @@
     <string name="hint1">Die Bäckerin befindet sich links.</string>
     <string name="hint2">Der Dieb befindet sich in der Mitte.</string>
 
+    <string name="text0">Hier steht dann ein Infotext über die Hofnärrin.</string>
+    <string name="text1">Hier steht dann ein Infotext über die Bäckerin.</string>
+    <string name="text2">Hier steht dann ein Infotext über den Dieb.</string>
+
+
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#D6B17B">
+    android:background="#D6B17B"
+    android:id="@+id/help_window_layout">
 
     <TextView
         android:id="@+id/text_hint"
